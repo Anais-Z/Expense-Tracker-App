@@ -1,0 +1,38 @@
+header,main  {
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+main > div {
+    height: 300px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly ;
+    align-items: center;
+}
+
+.the-name{
+    width: 505px;
+    display: flex;
+    justify-content: flex-start
+}
+
+input{
+    width: 200px;
+}
+
+.the-name > input{
+    margin-left: 5px;
+}
+
+
+td, th {
+    width: 800px;
+    border: 1px solid black
+}
