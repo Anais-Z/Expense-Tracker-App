@@ -13,9 +13,14 @@ const date = document.querySelector('input[name=date]')
 //accessing the location input
 const locationName = document.querySelector('input[name=locationName]')
 
+//creating the div
+const divMessage = document.createElement('div')
 
+//creating the error message if user doesn't enter the fields
+const errorMessage = document.createElement("p")
 
-   
+ //accessing the main element
+ const mainDiv = document.querySelector('.main-div')  
 
 
 submit.addEventListener('click', () => {
@@ -41,6 +46,10 @@ submit.addEventListener('click', () => {
        let expense = new Expense(expenseDetails[0] , expenseDetails[1],expenseDetails[2])
        console.log(expense.amount , expense.date, expense.locationName)
    }).catch((error) => {
+       errorMessage.innerText = error
+       errorMessage.style.color = 'red'
+       divMessage.append(errorMessage)
+       mainDiv.append(divMessage)
         console.log(error)
 })
 
