@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="main.js" defer></script>
+    <title>Expense Tracker</title>
 </head>
 <body>
     <header> <h1>Expense Tracker</h1> </header>
     <main>
         <div>
-            <h2>Add A New Item:</h2>
-        </div>
         <div>
+            <h2>Add A New Item</h2>
+        </div>
+        <div class="the-name">
             <label for="locationName"> Name </label>
             <input type="text" id="locationName" name="locationName" placeholder="Where was the expense made?">
         </div>
@@ -23,9 +26,21 @@
             <label for="amount"> Amount </label>
             <input type="text" id="amount" name="amount">
         </div>
-        <dib>
-            <button> Add Expense</button>
-        </dib>
+        <div>
+            <button class="submit"> Add Expense</button>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <th> Name </th>
+                    <th> Date </th>
+                    <th> Amount </th>
+                </tr>
+                
+            </table>
+        </div>
+        </div>
     </main>
 </body>
 </html>
