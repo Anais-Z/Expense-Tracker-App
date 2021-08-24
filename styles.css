@@ -36,3 +36,7 @@ td, th {
     width: 800px;
     border: 1px solid black
 }
+
+.default-row{
+    padding-left: 300px;
+}
