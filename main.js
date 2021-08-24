@@ -50,9 +50,16 @@ submit.addEventListener('click', () => {
        errorMessage.style.color = 'red'
        divMessage.append(errorMessage)
        mainDiv.append(divMessage)
+
+       //deletes message after 3 seconds it was shown
+       setTimeout(deleteMessage, 3000)
         console.log(error)
 })
 
 
 })
 
+//function used to delete the error message
+const deleteMessage = () =>{
+    divMessage.remove(self)
+}
