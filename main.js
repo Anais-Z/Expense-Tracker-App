@@ -13,13 +13,37 @@ const date = document.querySelector('input[name=date]')
 //accessing the location input
 const locationName = document.querySelector('input[name=locationName]')
 
+
+
+   
+
+
 submit.addEventListener('click', () => {
    
+     //creating a promise to check if the 3 inputs have values
+ let thePromise = new Promise((resolve, reject) => {
+
+    //check to see if the inputs are empty or not
+    if( amount.value != "" && date.value != "" && locationName.value != ""){
+        const expenseDetails = [];
+        expenseDetails.push(amount.value)
+        expenseDetails.push(date.value)
+        expenseDetails.push(locationName.value)
+        resolve(expenseDetails)
+    }else{
+        reject("Please fill in every field")
+    }
+})
+
+    //calling the promise
+   thePromise.then((expenseDetails) => {
+        //values of the inputs will be placed as arguments when creating an expense object
+       let expense = new Expense(expenseDetails[0] , expenseDetails[1],expenseDetails[2])
+       console.log(expense.amount , expense.date, expense.locationName)
+   }).catch((error) => {
+        console.log(error)
+})
+
 
 })
 
- //using a promise to check if the 3 inputs have values
-
-
-    //values of the inputs will be placed as arguments when creating an expense object
-    let expense = new Expense(amount, date, locationName)
