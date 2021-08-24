@@ -22,6 +22,8 @@ const errorMessage = document.createElement("p")
  //accessing the main element
  const mainDiv = document.querySelector('.main-div')  
 
+ //accessing the table
+ const table = document.querySelector(".main-table")
 
 submit.addEventListener('click', () => {
    
@@ -30,10 +32,12 @@ submit.addEventListener('click', () => {
 
     //check to see if the inputs are empty or not
     if( amount.value != "" && date.value != "" && locationName.value != ""){
+
+        //created an array to push the values
         const expenseDetails = [];
-        expenseDetails.push(amount.value)
-        expenseDetails.push(date.value)
         expenseDetails.push(locationName.value)
+        expenseDetails.push(date.value)
+        expenseDetails.push(amount.value)
         resolve(expenseDetails)
     }else{
         reject("Please fill in every field")
@@ -43,8 +47,12 @@ submit.addEventListener('click', () => {
     //calling the promise
    thePromise.then((expenseDetails) => {
         //values of the inputs will be placed as arguments when creating an expense object
+        //arguments will be the 3 values from the expenseDetails array
        let expense = new Expense(expenseDetails[0] , expenseDetails[1],expenseDetails[2])
        console.log(expense.amount , expense.date, expense.locationName)
+       //call createRow function and set the expenseDetails array as parameter
+       createRow(expenseDetails)
+
    }).catch((error) => {
        errorMessage.innerText = error
        errorMessage.style.color = 'red'
@@ -63,3 +71,39 @@ submit.addEventListener('click', () => {
 const deleteMessage = () =>{
     divMessage.remove(self)
 }
+
+//function will create the table row and table description every time button is clicked
+const createRow = (expenseDetails) =>{
+    //created table row
+    let tableRow = document.createElement('tr');
+
+    //created 4 table descriptions
+    let tableDesc1 = document.createElement('td')
+    let tableDesc2 = document.createElement('td')
+    let tableDesc3 = document.createElement('td')
+    let tableDesc4 = document.createElement('td')
+
+    //created a delete row button
+    let deleteRow = document.createElement('button')
+    deleteRow.innerHTML = "Delete Row"
+
+    //Each value from the array will be the inner text to each table description element
+    tableDesc1.innerText = `${expenseDetails[0]}`
+    tableDesc2.innerText = expenseDetails[1]
+    tableDesc3.innerText = `$${expenseDetails[2]}`
+
+    // Appended the delete row button to the last td element
+    tableDesc4.append(deleteRow) 
+
+    //append all 4 table descriptions to the table row
+    tableRow.append(tableDesc1)
+    tableRow.append(tableDesc2)
+    tableRow.append(tableDesc3)
+    tableRow.append(tableDesc4)
+
+    //append the table row to the actual table itself
+    table.append(tableRow)
+
+}
+
+
