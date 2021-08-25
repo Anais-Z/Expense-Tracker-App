@@ -49,7 +49,7 @@ submit.addEventListener('click', () => {
         //values of the inputs will be placed as arguments when creating an expense object
         //arguments will be the 3 values from the expenseDetails array
        let expense = new Expense(expenseDetails[0] , expenseDetails[1],expenseDetails[2])
-       console.log(expense.amount , expense.date, expense.locationName)
+      
        //call createRow function and set the expenseDetails array as parameter
        createRow(expenseDetails)
 
@@ -103,6 +103,28 @@ const createRow = (expenseDetails) =>{
 
     //append the table row to the actual table itself
     table.append(tableRow)
+
+    //call the rowDelete function
+    rowDelete()
+}
+//function will delete the the row when the row's button is clicked
+const rowDelete = () =>{
+    //accessing all buttons from the table
+    let deleteButtons = table.querySelectorAll('button')
+
+    //iterating through every button
+    deleteButtons.forEach( (e) => {
+
+        //e represent a element so the element from a list of buttons
+
+        //when the button element gets clicked, the following code inside the block will execute
+        e.addEventListener('click', () =>{
+            let tableDesc = e.parentNode
+            tableDesc.parentNode.remove(self)
+            
+        })
+    })
+
 
 }
 
